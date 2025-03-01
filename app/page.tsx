@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { CatList } from "@/components/cat-list"
 import { PlusCircle } from "lucide-react"
 import Link from "next/link"
+import { AlertDialogDescription } from "@/components/ui/alert-dialog"
 
 export default function Home() {
   return (

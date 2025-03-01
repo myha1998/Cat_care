@@ -105,6 +105,38 @@ let cats: Cat[] = [
   },
 ]
 
+// Add these interfaces at the top of the file
+interface CatInput {
+  name: string
+  breed: string
+  age: number
+  birthDate?: Date
+  imageUrl: string
+  specialNeeds?: boolean
+  notes?: string
+  feedingSchedule?: string
+}
+
+interface WeightInput {
+  value: number
+  date: Date
+  notes?: string
+}
+
+interface VetVisitInput {
+  date: Date
+  reason: string
+  notes?: string
+  vetName: string
+}
+
+interface VaccinationInput {
+  name: string
+  date: Date
+  dueDate: Date
+  notes?: string
+}
+
 // API functions
 export async function fetchCats(): Promise<Cat[]> {
   // Simulate API delay
@@ -117,7 +149,7 @@ export async function fetchCat(id: string): Promise<Cat | undefined> {
   return cats.find((cat) => cat.id === id)
 }
 
-export async function createCat(catData: any): Promise<Cat> {
+export async function createCat(catData: CatInput): Promise<Cat> {
   await new Promise((resolve) => setTimeout(resolve, 500))
 
   const newCat: Cat = {
@@ -139,7 +171,7 @@ export async function createCat(catData: any): Promise<Cat> {
   return newCat
 }
 
-export async function updateCat(id: string, catData: any): Promise<Cat> {
+export async function updateCat(id: string, catData: CatInput): Promise<Cat> {
   await new Promise((resolve) => setTimeout(resolve, 500))
 
   const catIndex = cats.findIndex((cat) => cat.id === id)
@@ -167,7 +199,7 @@ export async function deleteCat(id: string): Promise<void> {
 }
 
 // Weight tracking
-export async function addWeight(catId: string, weightData: any): Promise<Weight> {
+export async function addWeight(catId: string, weightData: WeightInput): Promise<Weight> {
   await new Promise((resolve) => setTimeout(resolve, 300))
 
   const catIndex = cats.findIndex((cat) => cat.id === catId)
@@ -194,7 +226,7 @@ export async function deleteWeight(catId: string, weightId: string): Promise<voi
 }
 
 // Vet visits
-export async function addVetVisit(catId: string, visitData: any): Promise<VetVisit> {
+export async function addVetVisit(catId: string, visitData: VetVisitInput): Promise<VetVisit> {
   await new Promise((resolve) => setTimeout(resolve, 300))
 
   const catIndex = cats.findIndex((cat) => cat.id === catId)
@@ -222,7 +254,7 @@ export async function deleteVetVisit(catId: string, visitId: string): Promise<vo
 }
 
 // Vaccinations
-export async function addVaccination(catId: string, vaccinationData: any): Promise<Vaccination> {
+export async function addVaccination(catId: string, vaccinationData: VaccinationInput): Promise<Vaccination> {
   await new Promise((resolve) => setTimeout(resolve, 300))
 
   const catIndex = cats.findIndex((cat) => cat.id === catId)
