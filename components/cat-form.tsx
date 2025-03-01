@@ -202,7 +202,7 @@ export function CatForm({ cat }: CatFormProps) {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Describe your cat's feeding routine and preferences</FormDescription>
+                <FormDescription>Describe your cat&apos;s feeding routine and preferences</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
