@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import { CatList } from "@/components/cat-list"
 import { PlusCircle } from "lucide-react"
 import Link from "next/link"
-import { AlertDialogDescription } from "@/components/ui/alert-dialog"
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">Discover</h1>
-            <p className="text-gray-700 mt-1 text-lg">Manage your cats' health and wellbeing</p>
+            <p className="text-gray-700 mt-1 text-lg">Manage your cats&apos; health and wellbeing</p>
           </div>
           <Link href="/cats/new">
             <Button className="flex items-center gap-2 rounded-full bg-gray-900 hover:bg-gray-800">

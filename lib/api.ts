@@ -285,6 +285,6 @@ export async function deleteVaccination(catId: string, vaccinationId: string): P
 export async function uploadImage(file: File): Promise<string> {
   await new Promise((resolve) => setTimeout(resolve, 1000))
   // In a real app, this would upload to a storage service and return the URL
-  return `/placeholder.svg?height=200&width=200`
+  return `/placeholder.svg?height=200&width=200&filename=${file.name}`
 }
 

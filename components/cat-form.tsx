@@ -72,9 +72,9 @@ export function CatForm({ cat }: CatFormProps) {
   const mutation = useMutation({
     mutationFn: (values: CatFormValues) => {
       if (cat) {
-        return updateCat(cat.id, values)
+        return updateCat(cat.id, { ...values, imageUrl: values.imageUrl || "" })
       } else {
-        return createCat(values)
+        return createCat({ ...values, imageUrl: values.imageUrl || "" })
       }
     },
     onSuccess: () => {

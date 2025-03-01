@@ -48,7 +48,7 @@ export function DeleteCatButton({ catId, catName }: DeleteCatButtonProps) {
         <AlertDialogHeader>
           <AlertDialogTitle>Delete {catName}</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete {catName}'s profile? This action cannot be undone and all health records
+            Are you sure you want to delete {catName}&rsquo;s profile? This action cannot be undone and all health records
             will be permanently removed.
           </AlertDialogDescription>
         </AlertDialogHeader>

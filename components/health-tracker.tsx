@@ -47,7 +47,7 @@ const vetVisitFormSchema = z.object({
   date: z.date(),
   reason: z.string().min(1, "Reason is required"),
   notes: z.string().optional(),
-  vetName: z.string().optional(),
+  vetName: z.string().min(1, "Veterinarian name is required"),
 })
 
 const vaccinationFormSchema = z.object({
@@ -130,7 +130,7 @@ function WeightTracker({ cat }: HealthTrackerProps) {
               Add Weight
             </Button>
           </div>
-          <CardDescription>Track your cat's weight over time</CardDescription>
+          <CardDescription>Track your cat&rsquo;s weight over time</CardDescription>
         </CardHeader>
         <CardContent>
           {showForm && (
@@ -236,7 +236,7 @@ function WeightTracker({ cat }: HealthTrackerProps) {
             </div>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
-              No weight records yet. Add your cat's weight to start tracking.
+              No weight records yet. Add your cat&rsquo;s weight to start tracking.
             </div>
           )}
 
@@ -337,7 +337,7 @@ function VetVisitTracker({ cat }: HealthTrackerProps) {
               Add Vet Visit
             </Button>
           </div>
-          <CardDescription>Record your cat's veterinary appointments</CardDescription>
+          <CardDescription>Record your cat&rsquo;s veterinary appointments</CardDescription>
         </CardHeader>
         <CardContent>
           {showForm && (
@@ -474,7 +474,7 @@ function VetVisitTracker({ cat }: HealthTrackerProps) {
             </Table>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
-              No vet visits recorded yet. Add your cat's vet visits to start tracking.
+              No vet visits recorded yet. Add your cat&rsquo;s vet visits to start tracking.
             </div>
           )}
         </CardContent>
@@ -532,7 +532,7 @@ function VaccinationTracker({ cat }: HealthTrackerProps) {
               Add Vaccination
             </Button>
           </div>
-          <CardDescription>Track your cat's vaccination history</CardDescription>
+          <CardDescription>Track your cat&rsquo;s vaccination history</CardDescription>
         </CardHeader>
         <CardContent>
           {showForm && (
@@ -685,7 +685,7 @@ function VaccinationTracker({ cat }: HealthTrackerProps) {
             </Table>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
-              No vaccinations recorded yet. Add your cat's vaccinations to start tracking.
+              No vaccinations recorded yet. Add your cat&rsquo;s vaccinations to start tracking.
             </div>
           )}
         </CardContent>
