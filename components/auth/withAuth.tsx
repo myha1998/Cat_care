@@ -3,8 +3,13 @@ import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function withAuth(Component: React.ComponentType) {
-  return function AuthenticatedComponent(props: any) {
+type WithAuthProps = {
+  // Add any specific props your wrapped components might need
+  [key: string]: any;
+};
+
+export default function withAuth<P extends WithAuthProps>(Component: React.ComponentType<P>) {
+  return function AuthenticatedComponent(props: P) {
     const { user, loading } = useAuth(true);
     const router = useRouter();
 
