@@ -1,9 +1,12 @@
+'use client';
+
 import { Button } from "@/components/ui/button"
 import { CatList } from "@/components/cat-list"
 import { PlusCircle } from "lucide-react"
 import Link from "next/link"
+import withAuth from '@/components/auth/withAuth'
 
-export default function Home() {
+function Dashboard() {
   return (
     <div className="min-h-screen bg-[#ffd9ce]">
       <div className="py-10 px-10 sm:px-6">
@@ -111,4 +114,6 @@ export default function Home() {
     </div>
   )
 }
+
+export default withAuth(Dashboard)
 
