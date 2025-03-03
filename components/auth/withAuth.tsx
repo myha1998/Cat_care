@@ -2,7 +2,6 @@
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { User } from '@supabase/supabase-js';
 
 export default function withAuth(Component: React.ComponentType) {
   return function AuthenticatedComponent(props: any) {
