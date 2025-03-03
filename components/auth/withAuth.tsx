@@ -1,27 +1,29 @@
 'use client';
 import { useAuth } from '@/lib/auth';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-// Define a base type for props that all wrapped components might need
-type BaseWithAuthProps = {
-  // Add common props here if needed
-};
+interface WithAuthProps {
+  [key: string]: unknown;
+}
 
-// Default to empty object if no specific props are needed
-export default function withAuth<P extends BaseWithAuthProps = {}>(
-  Component: React.ComponentType<P>
-) {
-  return function AuthenticatedComponent(props: P) {
+export default function withAuth(Component: React.ComponentType) {
+  return function AuthenticatedComponent(props: WithAuthProps) {
     const { user, loading } = useAuth(true);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get('callbackUrl') || '/';
 
-    // Only include router in dependencies if it's actually used
     useEffect(() => {
-      if (!loading && !user) {
+      try {
+        if (!loading && !user) {
+          router.push(`/auth/login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+        }
+      } catch (error) {
+        console.error('Authentication error:', error);
         router.push('/auth/login');
       }
-    }, [user, loading]); // Removed router from dependencies as it's stable
+    }, [user, loading, router, callbackUrl]);
 
     if (loading || !user) {
       return <div>Loading...</div>;
