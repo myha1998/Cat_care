@@ -12,7 +12,8 @@ import { DeleteCatButton } from "@/components/delete-cat-button"
 import { Badge } from "@/components/ui/badge"
 
 export default async function CatDetailsPage({ params }: { params: { id: string } }) {
-  const cat = await fetchCat(params.id)
+  const { id } = params
+  const cat = await fetchCat(id)
 
   if (!cat) {
     notFound()
