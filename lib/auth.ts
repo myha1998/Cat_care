@@ -2,7 +2,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { User } from '@supabase/supabase-js';
+import { User, Session } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -16,7 +16,10 @@ export const signInWithGoogle = async () => {
   return { data, error };
 };
 
-export const signUpWithEmail = async (email: string, password: string): Promise<{ data: any; error: any }> => {
+export const signUpWithEmail = async (
+  email: string,
+  password: string
+): Promise<{ data: { user: User | null; session: Session | null } | null; error: Error | null }> => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -24,7 +27,10 @@ export const signUpWithEmail = async (email: string, password: string): Promise<
   return { data, error };
 };
 
-export const signInWithEmail = async (email: string, password: string): Promise<{ data: any; error: any }> => {
+export const signInWithEmail = async (
+  email: string,
+  password: string
+): Promise<{ data: { user: User | null; session: Session | null } | null; error: Error | null }> => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
