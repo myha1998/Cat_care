@@ -16,7 +16,7 @@ export const signInWithGoogle = async () => {
   return { data, error };
 };
 
-export const signUpWithEmail = async (email: string, password: string) => {
+export const signUpWithEmail = async (email: string, password: string): Promise<{ data: any; error: any }> => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -24,7 +24,7 @@ export const signUpWithEmail = async (email: string, password: string) => {
   return { data, error };
 };
 
-export const signInWithEmail = async (email: string, password: string) => {
+export const signInWithEmail = async (email: string, password: string): Promise<{ data: any; error: any }> => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,

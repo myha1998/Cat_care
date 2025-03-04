@@ -7,7 +7,7 @@ interface WithAuthProps {
   [key: string]: unknown;
 }
 
-export default function withAuth(Component: React.ComponentType) {
+export default function withAuth(Component: React.ComponentType<WithAuthProps>) {
   return function AuthenticatedComponent(props: WithAuthProps) {
     const { user, loading } = useAuth(true);
     const router = useRouter();

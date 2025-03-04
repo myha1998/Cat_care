@@ -139,7 +139,6 @@ interface VaccinationInput {
 
 // API functions
 export async function fetchCats(): Promise<Cat[]> {
-  // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 500))
   return cats
 }
